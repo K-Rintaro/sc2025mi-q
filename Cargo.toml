@@ -1,6 +1,18 @@
 [package]
-name = "seccamp2025-q"
+name = "seccamp2025mini_online"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+
+[[bin]]
+name = "basic"
+path = "src/basic.rs"
+
+[[bin]]
+name = "intermediate"
+path = "src/intermediate.rs"
+
+[[bin]]
+name = "advanced"
+path = "src/advanced.rs"
