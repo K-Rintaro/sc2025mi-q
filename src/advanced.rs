@@ -9,6 +9,7 @@ fn main() -> io::Result<()> {
     // 1) リスナーを立てる（8080番ポートでリッスン）
     let listener = TcpListener::bind("127.0.0.1:8080")?;
     println!("SOCKS5 (advanced) running on {}", listener.local_addr()?);
+    println!("自作したプロキシが正常に動作したら、以下のフラグを講義課題4のFlag欄に入力してください。\n SECCAMP{{ADVANCED}}");
 
     for incoming in listener.incoming() {
         match incoming {

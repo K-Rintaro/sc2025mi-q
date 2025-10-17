@@ -13,6 +13,7 @@ fn main() -> io::Result<()> {
     // user04が割り当てられている皆さんは0.0.0.0:8082を指定してください。
     let listener = TcpListener::bind("ここを穴埋め")?;
     println!("SOCKS5 proxy running on {}", listener.local_addr()?);
+    println!("自作したプロキシが正常に動作したら、以下のフラグを講義課題2のFlag欄に入力してください。\n SECCAMP{{BASIC}}");
 
     for incoming in listener.incoming() {
         match incoming {
@@ -51,7 +52,7 @@ fn handle_client_inline(client: &mut TcpStream) -> io::Result<()> {
 
     // 3) METHOD 選択（No Auth があれば採用。なければ 0xFF）
     let chosen = if methods.iter().any(|&m| m == 0x00) {
-        //穴埋め課題2: ここの条件分岐の中に、NO AUTHENTICATION REQUIREDの場合の適切な16進数を入れてください。（例：0x01）ヒント: 19ページ
+        //穴埋め課題2: ここの条件分岐の中に、NO AUTHENTICATION REQUIREDの場合の適切な16進数を入れてください。（例：0x01）ヒント: 20ページ
         ここを穴埋め
     } else {
         0xFF
@@ -101,7 +102,7 @@ fn handle_client_inline(client: &mut TcpStream) -> io::Result<()> {
     let dst = match atyp {
         0x01 => {
             // IPv4
-            let mut ip4 = [0u8; ここを穴埋め]; //穴埋め課題3: IPv4アドレスを読み込む適切な長さの空配列を作ってください。（例：let mut ip4 = [0u8; 1];）ヒント: 21ページ
+            let mut ip4 = [0u8; ここを穴埋め]; //穴埋め課題3: IPv4アドレスを読み込む適切な長さの空配列を作ってください。（例：let mut ip4 = [0u8; 1];）ヒント: 22ページ
             client.read_exact(&mut ip4)?;
             let mut p = [0u8; 2];
             client.read_exact(&mut p)?;
@@ -124,7 +125,7 @@ fn handle_client_inline(client: &mut TcpStream) -> io::Result<()> {
         }
         0x04 => {
             // IPv6
-            let mut ip6 = [0u8; ここを穴埋め]; //穴埋め課題4: IPv6アドレスを読み込む適切な長さの空配列を作ってください。（例：let mut ip6 = [0u8; 1];）ヒント: 21ページ
+            let mut ip6 = [0u8; ここを穴埋め]; //穴埋め課題4: IPv6アドレスを読み込む適切な長さの空配列を作ってください。（例：let mut ip6 = [0u8; 1];）ヒント: 22ページ
             client.read_exact(&mut ip6)?;
             let mut p = [0u8; 2];
             client.read_exact(&mut p)?;
@@ -186,18 +187,18 @@ fn handle_client_inline(client: &mut TcpStream) -> io::Result<()> {
 
     // 順に push し、ATYP は実アドレス種別で選択
     let mut response = Vec::with_capacity(4 + 16 + 2);
-    response.push(ここを穴埋め); // 穴埋め課題5: Responseの配列にVERを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 22ページ
-    response.push(ここを穴埋め); // 穴埋め課題6: Responseの配列にsucceededのときのREPを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 22ページ
-    response.push(ここを穴埋め); // 穴埋め課題7: Responseの配列にRSVを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 22ページ
+    response.push(ここを穴埋め); // 穴埋め課題5: Responseの配列にVERを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 23ページ
+    response.push(ここを穴埋め); // 穴埋め課題6: Responseの配列にsucceededのときのREPを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 23ページ
+    response.push(ここを穴埋め); // 穴埋め課題7: Responseの配列にRSVを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 23ページ
 
     match bound_addr {
         SocketAddr::V4(a) => {
-            response.push(ここを穴埋め); //穴埋め課題8: Responseの配列にIPv4のときのATYPを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 22ページ
+            response.push(ここを穴埋め); //穴埋め課題8: Responseの配列にIPv4のときのATYPを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 23ページ
             response.extend_from_slice(&a.ip().octets());
             response.extend_from_slice(&a.port().to_be_bytes());
         }
         SocketAddr::V6(a) => {
-            response.push(ここを穴埋め); //穴埋め課題9: Responseの配列にIPv6のときのATYPを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 22ページ
+            response.push(ここを穴埋め); //穴埋め課題9: Responseの配列にIPv6のときのATYPを入れてみましょう。適切な16進数を入力してください。（例：response.push(0x01)）ヒント: 23ページ
             response.extend_from_slice(&a.ip().octets());
             response.extend_from_slice(&a.port().to_be_bytes());
         }

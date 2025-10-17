@@ -21,6 +21,7 @@ fn main() -> io::Result<()> {
     // 穴埋め課題2: 共通課題で穴埋めしたときと同じアドレスを指定してください。
     let listener = TcpListener::bind("ここを穴埋め")?;
     println!("SOCKS5 proxy (intermediate) on {}", listener.local_addr()?);
+    println!("自作したプロキシが正常に動作したら、以下のフラグを講義課題3のFlag欄に入力してください。\n SECCAMP{{INTERMEDIATE}}");
 
     for incoming in listener.incoming() {
         match incoming {
