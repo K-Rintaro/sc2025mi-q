@@ -7,7 +7,8 @@ use std::thread;
 
 fn main() -> io::Result<()> {
     // 1) リスナーを立てる（8080番ポートでリッスン）
-    let listener = TcpListener::bind("127.0.0.1:8080")?;
+    // 穴埋め課題1: 共通課題で穴埋めしたときと同じアドレスを指定してください。
+    let listener = TcpListener::bind("ここを穴埋め")?;
     println!("SOCKS5 (advanced) running on {}", listener.local_addr()?);
     println!("自作したプロキシが正常に動作したら、以下のフラグを講義課題4のFlag欄に入力してください。\n SECCAMP{{ADVANCED}}");
 
